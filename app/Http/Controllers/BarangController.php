@@ -15,7 +15,15 @@ class BarangController extends Controller
       }
 
       public function barangbaru(Request $request){
-        return Gudang::create($request->all());
+
+        $namafoto = time().'.'.$request->file('foto_barang')->extension();
+        $pindahfoto = $request->file('foto_barang')->move('foto',$namafoto);
+        return Gudang::create([
+          'nama_barang' => $request->nama_barang,
+          'harga_barang' => $request->harga_barang,
+          'stok_barang' => $request->stok_barang,
+          'foto_barang' => $namafoto
+        ]);
       }
 
       public function editbarang(Request $request, $id_barang){

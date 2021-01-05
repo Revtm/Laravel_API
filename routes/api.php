@@ -20,5 +20,5 @@ use App\Gudang;
 Route::get('gudang', 'BarangController@index');
 Route::get('satubarang/{id_barang}', 'BarangController@satu');
 Route::post('barangbaru','BarangController@barangbaru');
-Route::put('editbarang/{id_barang}', 'BarangController@editbarang');
+Route::post('editbarang/{id_barang}', 'BarangController@editbarang');
 Route::delete('hapusbarang/{id_barang}', 'BarangController@hapusbarang');

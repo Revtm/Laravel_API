@@ -14,6 +14,7 @@ class V3 extends Migration
     public function up()
     {
       Schema::dropIfExists('gudang');
+      Schema::dropIfExists('pegawai');
 
       Schema::create('pegawai', function (Blueprint $table) {
           $table->increments('id_pegawai');
@@ -27,7 +28,7 @@ class V3 extends Migration
           $table->string('nama_barang',25);
           $table->integer('harga_barang');
           $table->integer('stok_barang');
-          $table->string('foto_barang');
+          $table->string('foto_barang')->nullable();
           $table->timestamps();
       });
     }
