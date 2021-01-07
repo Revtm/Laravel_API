@@ -17,8 +17,8 @@ use App\Gudang;
 //     return $request->user();
 // });
 
-Route::get('gudang', 'BarangController@index');
-Route::get('satubarang/{id_barang}', 'BarangController@satu');
-Route::post('barangbaru','BarangController@barangbaru');
-Route::post('editbarang/{id_barang}', 'BarangController@editbarang');
-Route::delete('hapusbarang/{id_barang}', 'BarangController@hapusbarang');
+Route::middleware('auth:api')->get('gudang', 'BarangController@index');
+Route::middleware('auth:api')->get('satubarang/{id_barang}', 'BarangController@satu');
+Route::middleware('auth:api')->post('barangbaru','BarangController@barangbaru');
+Route::middleware('auth:api')->post('editbarang/{id_barang}', 'BarangController@editbarang');
+Route::middleware('auth:api')->delete('hapusbarang/{id_barang}', 'BarangController@hapusbarang');

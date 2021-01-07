@@ -15,4 +15,4 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'BarangController@barangView');
+Route::get('/tidakdikenali', 'BarangController@tidakdikenali')->name('tidakdikenali');
