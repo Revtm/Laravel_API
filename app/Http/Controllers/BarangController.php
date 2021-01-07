@@ -18,7 +18,7 @@ class BarangController extends Controller
         if($barang == null){
           return response()->json([
              'pesan' => 'Tidak ada barang ber-id ' . $id_barang,
-          ]);
+          ],404);
         }
         return $barang;
       }
@@ -42,12 +42,18 @@ class BarangController extends Controller
         $nama_barang = time() . '.' . $request->file('foto_barang')->extension();
 
         $foto_barang = $request->file('foto_barang')->storeAs('public/foto', $nama_barang);
-        return Gudang::create([
+        $barang = Gudang::create([
           'nama_barang' => $request->nama_barang,
           'harga_barang' => $request->harga_barang,
           'stok_barang' => $request->stok_barang,
           'foto_barang' => $foto_barang,
         ]);
+
+        return response()->json([
+           'pesan' => 'tambah barang berhasil',
+           'data' => $barang
+        ], 201);
+
       }
 
       public function editbarang(Request $request, $id_barang){
@@ -135,6 +141,12 @@ class BarangController extends Controller
 
         return response()->json([
              'pesan' => 'delete berhasil'
-        ]);
+        ], 204);
+      }
+
+      public function tidakdikenali(){
+        return response()->json([
+             'pesan' => 'tidak dikenali'
+        ],401);
       }
 }
