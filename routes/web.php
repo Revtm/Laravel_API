@@ -16,3 +16,8 @@
 // });
 
 Route::get('/tidakdikenali', 'BarangController@tidakdikenali')->name('tidakdikenali');
+Route::get('/', 'Login@index')->name('halamanlogin');
+Route::post('/login', 'Login@cekLogin')->name('login');
+
+Route::get('/beranda', 'Beranda@index')->name('beranda');
+Route::get('/logout', 'Beranda@cekLogout');
